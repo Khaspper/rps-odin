@@ -3,7 +3,7 @@ function getComputerChoice() {
     return weapon;
 }
 
-function startGame(playerSelection = prompt("Rock, Paper or Scissors?"), computerSelection = getComputerChoice()) {
+function playRound(playerSelection = prompt("Rock, Paper or Scissors?"), computerSelection = getComputerChoice()) {
     switch (playerSelection.toLowerCase()) {
         case "rock":
             playerSelection = 0;
