@@ -63,7 +63,7 @@ function game() {
     let playerScore = 0;
     let cpuScore = 0;
     for (let i = 0; i < 5; i++) {
-        roundResult = playRound("Rock");
+        roundResult = playRound();
         if (roundResult === 1) {
             playerScore++;
             if (playerScore === 3)
