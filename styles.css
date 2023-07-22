@@ -7,6 +7,7 @@
 }
 
 body {
+    margin-bottom: 0px;
     display: flex;
     position: absolute;
     border-radius: 15px;
@@ -59,7 +60,6 @@ body {
 }
 
 #weapons {
-    border: solid;
     display: flex;
     flex: 1;
     justify-content: space-around;

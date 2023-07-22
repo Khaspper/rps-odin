@@ -209,3 +209,5 @@ function game() {
 
 
 setTimeout(threeSecondsPassed, 2300);
+
+// TODO: All I'm missing is the name of the pokemon the level and the photos of the pokemon
