@@ -1,6 +1,40 @@
-#results {
+body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#scoreBoard {
     border: solid;
     display: flex;
     min-height: 200px;
-    min-width: 400px;
+    min-width: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#players {
+    border: solid blue;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#points {
+    border: solid red;
+    width: 100%;
+    display: flex;    
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#weapons {
+    margin: 0px 21px 21px;
+    display: flex;
+    justify-content: center;
 }
