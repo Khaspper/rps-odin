@@ -1,9 +1,51 @@
+const body = document.querySelector('body');
+body.style.backgroundImage = "url(./img/pokemon-encounter.gif)";
+body.style.backgroundPosition = "TOP";
+body.style.backgroundRepeat = "no-repeat";
+body.style.backgroundSize = "90%";
+
+function threeSecondsPassed() {
+    body.style.backgroundImage = "url(./img/battle_field.jpeg)";
+}
+
+setTimeout(threeSecondsPassed, 2500);
+
+const contestant = document.createElement('div');
+contestant.setAttribute('id', 'contestant');
+
+const playerOneDiv = document.createElement('div');
+playerOneDiv.setAttribute('id', 'player_one');
+playerOneDiv.textContent = "You";
+contestant.appendChild(playerOneDiv);
+
+const cpuDiv = document.createElement('div');
+cpuDiv.setAttribute('id', 'cpu');
+cpuDiv.textContent = "CPU";
+contestant.appendChild(cpuDiv);
+
+const pointsDiv = document.createElement('div');
+pointsDiv.setAttribute('id', 'points');
+
+const playersPointDiv = document.createElement('div');
+playersPointDiv.setAttribute('id', 'playersPoint');
+playersPointDiv.textContent = 0;
+pointsDiv.appendChild(playersPointDiv);
+
+const cpuPointsDiv = document.createElement('div');
+cpuPointsDiv.setAttribute('id', 'cpuPointsDiv');
+cpuPointsDiv.textContent = 0;
+pointsDiv.appendChild(cpuPointsDiv);
+
+const scoreBoard = document.getElementById('scoreBoard');
+scoreBoard.appendChild(contestant);
+scoreBoard.appendChild(pointsDiv);
+
 function getComputerChoice() {
     let weapon = Math.floor(Math.random() * 3);
     return weapon;
 }
 
-function playRound(playerSelection, computerSelection = getComputerChoice(), userScore, comScore) {
+function playRound(playerSelection, computerSelection = 0, userScore, comScore) {
     switch (playerSelection.toLowerCase()) {
         case "rock":
             playerSelection = 0;
@@ -49,32 +91,29 @@ function playRound(playerSelection, computerSelection = getComputerChoice(), use
     }
 }
 
-function updateScore(userScore, comScore) {
-    const playersPoint = document.querySelector('#playersPoint');
-    const cpuPoints = document.querySelector('#cpuPoints');
-    
-    playersPoint.textContent = `${userScore}`;
-    cpuPoints.textContent = `${comScore}`;
+function updateScoreBoard(userScore, comScore) {    
+    playersPointDiv.textContent = `${userScore}`;
+    cpuPointsDiv.textContent = `${comScore}`;
 }
 
 function playerWins() {
-    const resultsDIV = document.getElementById("results");
-    while (resultsDIV.firstChild) {
-        resultsDIV.removeChild(resultsDIV.firstChild);
+    const scoreBoardDiv = document.getElementById("scoreBoard");
+    while (scoreBoardDiv.firstChild) {
+        scoreBoardDiv.removeChild(scoreBoardDiv.firstChild);
     }
     const outcome = document.createElement("div");
     outcome.textContent = "You WON!!!!";
-    resultsDIV.appendChild(outcome);
+    scoreBoardDiv.appendChild(outcome);
 }
 
 function cpuWins() {
-    const resultsDIV = document.getElementById("results");
-    while (resultsDIV.firstChild) {
-        resultsDIV.removeChild(resultsDIV.firstChild);
+    const scoreBoardDiv = document.getElementById("scoreBoard");
+    while (scoreBoardDiv.firstChild) {
+        scoreBoardDiv.removeChild(scoreBoardDiv.firstChild);
     }
     const outcome = document.createElement("div");
     outcome.textContent = "You LOST!!!!";
-    resultsDIV.appendChild(outcome);
+    scoreBoardDiv.appendChild(outcome);
 }
 
 function game() {
@@ -92,8 +131,8 @@ function game() {
         if(roundResult === 1) playerScore++;
         else if(roundResult === -1) cpuScore++;
         if(playerScore === 5) playerWins();
-        else if(cpuScore === 5) playerWins();
-        else updateScore(playerScore, cpuScore);
+        else if(cpuScore === 5) cpuWins();
+        else updateScoreBoard(playerScore, cpuScore);
     });
     paperButton.addEventListener("click", (event) => {
         roundResult = playRound(playerSelection = "paper");
@@ -101,8 +140,8 @@ function game() {
         if(roundResult === 1) playerScore++;
         else if(roundResult === -1) cpuScore++;
         if(playerScore === 5) playerWins();
-        else if(cpuScore === 5) playerWins();
-        else updateScore(playerScore, cpuScore);
+        else if(cpuScore === 5) cpuWins();
+        else updateScoreBoard(playerScore, cpuScore);
     });
     scissorsButton.addEventListener("click", (event) => {
         roundResult = playRound(playerSelection = "scissors");
@@ -110,16 +149,10 @@ function game() {
         if(roundResult === 1) playerScore++;
         else if(roundResult === -1) cpuScore++;
         if(playerScore === 5) playerWins();
-        else if(cpuScore === 5) playerWins();
-        else updateScore(playerScore, cpuScore);
+        else if(cpuScore === 5) cpuWins();
+        else updateScoreBoard(playerScore, cpuScore);
     });
 }
 
 
-
 game()
-//! Adding event listers to the three buttons
-
-//? Just change the function names and make it call the function "play round"
-
-// TODO: INSTEAD OF ROCK PAPER SCISSORS DO POKEMON!!!!! CHARMANDER SQUIRTLE AND BULBASAUR

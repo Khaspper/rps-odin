@@ -2,7 +2,9 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
+    background-color: black;
 }
+
 
 #scoreBoard {
     border: solid;
@@ -15,7 +17,7 @@ body {
     gap: 50px;
 }
 
-#players {
+#contestant {
     border: solid blue;
     display: flex;
     flex: 1;
