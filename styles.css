@@ -1,0 +1,6 @@
+#results {
+    border: solid;
+    display: flex;
+    min-height: 200px;
+    min-width: 400px;
+}
