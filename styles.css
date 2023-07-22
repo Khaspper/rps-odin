@@ -1,6 +1,11 @@
 body {
     display: flex;
-    flex-direction: column;
+    position: absolute;
+    bottom: 10px;
+    height: 150px;
+    width: 95%;
+    justify-content: space-around;
+    border: 3px solid #8AC007;
     text-align: center;
     background-color: black;
 }

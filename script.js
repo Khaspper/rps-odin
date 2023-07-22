@@ -6,39 +6,59 @@ body.style.backgroundSize = "90%";
 
 function threeSecondsPassed() {
     body.style.backgroundImage = "url(./img/battle_field.jpeg)";
+    addContent();
 }
 
-setTimeout(threeSecondsPassed, 2500);
+setTimeout(threeSecondsPassed, 2300);
+function addContent() {
 
-const contestant = document.createElement('div');
-contestant.setAttribute('id', 'contestant');
+    const contestant = document.createElement('div');
+    contestant.setAttribute('id', 'contestant');
 
-const playerOneDiv = document.createElement('div');
-playerOneDiv.setAttribute('id', 'player_one');
-playerOneDiv.textContent = "You";
-contestant.appendChild(playerOneDiv);
+    const playerOneDiv = document.createElement('div');
+    playerOneDiv.setAttribute('id', 'player_one');
+    playerOneDiv.textContent = "You";
+    contestant.appendChild(playerOneDiv);
 
-const cpuDiv = document.createElement('div');
-cpuDiv.setAttribute('id', 'cpu');
-cpuDiv.textContent = "CPU";
-contestant.appendChild(cpuDiv);
+    const cpuDiv = document.createElement('div');
+    cpuDiv.setAttribute('id', 'cpu');
+    cpuDiv.textContent = "CPU";
+    contestant.appendChild(cpuDiv);
 
-const pointsDiv = document.createElement('div');
-pointsDiv.setAttribute('id', 'points');
+    const pointsDiv = document.createElement('div');
+    pointsDiv.setAttribute('id', 'points');
 
-const playersPointDiv = document.createElement('div');
-playersPointDiv.setAttribute('id', 'playersPoint');
-playersPointDiv.textContent = 0;
-pointsDiv.appendChild(playersPointDiv);
+    const playersPointDiv = document.createElement('div');
+    playersPointDiv.setAttribute('id', 'playersPoint');
+    playersPointDiv.textContent = 0;
+    pointsDiv.appendChild(playersPointDiv);
 
-const cpuPointsDiv = document.createElement('div');
-cpuPointsDiv.setAttribute('id', 'cpuPointsDiv');
-cpuPointsDiv.textContent = 0;
-pointsDiv.appendChild(cpuPointsDiv);
+    const cpuPointsDiv = document.createElement('div');
+    cpuPointsDiv.setAttribute('id', 'cpuPointsDiv');
+    cpuPointsDiv.textContent = 0;
+    pointsDiv.appendChild(cpuPointsDiv);
 
-const scoreBoard = document.getElementById('scoreBoard');
-scoreBoard.appendChild(contestant);
-scoreBoard.appendChild(pointsDiv);
+    const scoreBoard = document.getElementById('scoreBoard');
+    scoreBoard.appendChild(contestant);
+    scoreBoard.appendChild(pointsDiv);
+
+    const rockButton = document.createElement('button');
+    rockButton.textContent = "Rock";
+    rockButton.setAttribute('id', 'rockButton');
+
+    const paperButton = document.createElement('button');
+    paperButton.textContent = "Paper";
+    paperButton.setAttribute('id', 'paperButton');
+
+    const scissorsButton = document.createElement('button');
+    scissorsButton.textContent = "Scissors";
+    scissorsButton.setAttribute('id', 'scissorsButton');
+
+    const weaponsDiv = document.querySelector('#weapons');
+    weaponsDiv.appendChild(rockButton);
+    weaponsDiv.appendChild(paperButton);
+    weaponsDiv.appendChild(scissorsButton);
+}
 
 function getComputerChoice() {
     let weapon = Math.floor(Math.random() * 3);
