@@ -125,22 +125,40 @@ function updateScoreBoard(userScore, comScore) {
 
 function playerWins() {
     const scoreBoardDiv = document.getElementById("scoreBoard");
+    const restartButton = document.createElement("button");
+    const outcome = document.createElement("div");
     while (scoreBoardDiv.firstChild) {
         scoreBoardDiv.removeChild(scoreBoardDiv.firstChild);
     }
-    const outcome = document.createElement("div");
     outcome.textContent = "You WON!!!!";
+    restartButton.textContent = "Play Again?";
+    restartButton.style.backgroundColor = "#ee1515";
+    restartButton.style.padding = "15px 20px";
+    restartButton.style.borderRadius = "10px";
+
     scoreBoardDiv.appendChild(outcome);
+    scoreBoardDiv.appendChild(restartButton);
+
+    restartButton.addEventListener("click", () => {window.location.reload()});
 }
 
 function cpuWins() {
     const scoreBoardDiv = document.getElementById("scoreBoard");
+    const restartButton = document.createElement("button");
+    const outcome = document.createElement("div");
     while (scoreBoardDiv.firstChild) {
         scoreBoardDiv.removeChild(scoreBoardDiv.firstChild);
     }
-    const outcome = document.createElement("div");
     outcome.textContent = "You LOST!!!!";
+    restartButton.textContent = "Play Again?";
+    restartButton.style.backgroundColor = "#ee1515";
+    restartButton.style.padding = "15px 20px";
+    restartButton.style.borderRadius = "10px";
+
     scoreBoardDiv.appendChild(outcome);
+    scoreBoardDiv.appendChild(restartButton);
+
+    restartButton.addEventListener("click", () => {window.location.reload()});
 }
 
 function game() {
