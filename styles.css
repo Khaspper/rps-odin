@@ -1,25 +1,43 @@
+@import url(https://db.onlinewebfonts.com/c/6e5393a64ca23c455e8568d409e82da6?family=Pokemon+Hollow+Normal+V2);
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+* {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 23px;
+}
+
 body {
     display: flex;
     position: absolute;
-    bottom: 10px;
-    height: 150px;
-    width: 95%;
+    border-radius: 15px;
+    bottom: 0px;
+    height: 100%;
+    width: 90%;
     justify-content: space-around;
     border: 3px solid #8AC007;
     text-align: center;
     background-color: black;
 }
 
+#menu {
+    display: flex;
+    position: absolute;
+    border-radius: 15px;
+    bottom: 0px;
+    height: 135px;
+    width: 90%;
+    justify-content: space-around;
+    border: 3px solid #8AC007;
+    text-align: center;
+}
 
 #scoreBoard {
+    width: 70%;
     border: solid;
     display: flex;
-    min-height: 200px;
-    min-width: 200px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
 }
 
 #contestant {
@@ -41,7 +59,37 @@ body {
 }
 
 #weapons {
-    margin: 0px 21px 21px;
+    border: solid;
     display: flex;
+    flex: 1;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#charmanderButton {
+    background-color: #fe9441;
     justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#squirtleButton {
+    background-color: #93c8d0;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#bulbasaurButton {
+    background-color: #b5fd50;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#pikachuButton {
+    background-color: #f4dc26;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
 }

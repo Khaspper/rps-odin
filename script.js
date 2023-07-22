@@ -7,9 +7,9 @@ body.style.backgroundSize = "90%";
 function threeSecondsPassed() {
     body.style.backgroundImage = "url(./img/battle_field.jpeg)";
     addContent();
+    game();
 }
 
-setTimeout(threeSecondsPassed, 2300);
 function addContent() {
 
     const contestant = document.createElement('div');
@@ -42,22 +42,27 @@ function addContent() {
     scoreBoard.appendChild(contestant);
     scoreBoard.appendChild(pointsDiv);
 
-    const rockButton = document.createElement('button');
-    rockButton.textContent = "Rock";
-    rockButton.setAttribute('id', 'rockButton');
+    const charmanderDIV = document.createElement('button');
+    charmanderDIV.textContent = "Charmander";
+    charmanderDIV.setAttribute('id', 'charmanderButton');
 
-    const paperButton = document.createElement('button');
-    paperButton.textContent = "Paper";
-    paperButton.setAttribute('id', 'paperButton');
+    const squirtleDIV = document.createElement('button');
+    squirtleDIV.textContent = "Squirtle";
+    squirtleDIV.setAttribute('id', 'squirtleButton');
 
-    const scissorsButton = document.createElement('button');
-    scissorsButton.textContent = "Scissors";
-    scissorsButton.setAttribute('id', 'scissorsButton');
+    const bulbasaurDIV = document.createElement('button');
+    bulbasaurDIV.textContent = "Bulbasaur";
+    bulbasaurDIV.setAttribute('id', 'bulbasaurButton');
+
+    const pikachuDIV = document.createElement('button');
+    pikachuDIV.textContent = "Pikachu";
+    pikachuDIV.setAttribute('id', 'pikachuButton');
 
     const weaponsDiv = document.querySelector('#weapons');
-    weaponsDiv.appendChild(rockButton);
-    weaponsDiv.appendChild(paperButton);
-    weaponsDiv.appendChild(scissorsButton);
+    weaponsDiv.appendChild(charmanderDIV);
+    weaponsDiv.appendChild(squirtleDIV);
+    weaponsDiv.appendChild(bulbasaurDIV);
+    weaponsDiv.appendChild(pikachuDIV);
 }
 
 function getComputerChoice() {
@@ -65,7 +70,7 @@ function getComputerChoice() {
     return weapon;
 }
 
-function playRound(playerSelection, computerSelection = 0, userScore, comScore) {
+function playRound(playerSelection, computerSelection = getComputerChoice(), userScore, comScore) {
     switch (playerSelection.toLowerCase()) {
         case "rock":
             playerSelection = 0;
@@ -112,6 +117,8 @@ function playRound(playerSelection, computerSelection = 0, userScore, comScore) 
 }
 
 function updateScoreBoard(userScore, comScore) {    
+    const playersPointDiv = document.getElementById("playersPoint");
+    const cpuPointsDiv = document.getElementById("cpuPointsDiv");
     playersPointDiv.textContent = `${userScore}`;
     cpuPointsDiv.textContent = `${comScore}`;
 }
@@ -141,11 +148,19 @@ function game() {
     let playerScore = 0;
     let cpuScore = 0;
 
-    const rockButton = document.getElementById("rockButton");
-    const paperButton = document.getElementById("paperButton");
-    const scissorsButton = document.getElementById("scissorsButton");
+    const charmander = document.getElementById("charmanderButton");
+    const squirtle = document.getElementById("squirtleButton");
+    const bulbasaur = document.getElementById("bulbasaurButton");
+    const pikachu = document.querySelector("#pikachuButton");
+    
+    console.log(charmander);
+    console.log(squirtle);
+    console.log(bulbasaur);
+    console.log(pikachu);
 
-    rockButton.addEventListener("click", (event) => {
+    pikachu.addEventListener("click", (event) => alert("PIKACHU DOESN'T WANT TO FIGHT :("))
+
+    charmander.addEventListener("click", (event) => {
         roundResult = playRound(playerSelection = "rock");
         console.log(roundResult);
         if(roundResult === 1) playerScore++;
@@ -154,7 +169,7 @@ function game() {
         else if(cpuScore === 5) cpuWins();
         else updateScoreBoard(playerScore, cpuScore);
     });
-    paperButton.addEventListener("click", (event) => {
+    squirtleButton.addEventListener("click", (event) => {
         roundResult = playRound(playerSelection = "paper");
         console.log(roundResult);
         if(roundResult === 1) playerScore++;
@@ -163,7 +178,7 @@ function game() {
         else if(cpuScore === 5) cpuWins();
         else updateScoreBoard(playerScore, cpuScore);
     });
-    scissorsButton.addEventListener("click", (event) => {
+    bulbasaur.addEventListener("click", (event) => {
         roundResult = playRound(playerSelection = "scissors");
         console.log(roundResult);
         if(roundResult === 1) playerScore++;
@@ -175,4 +190,4 @@ function game() {
 }
 
 
-game()
+setTimeout(threeSecondsPassed, 2300);
