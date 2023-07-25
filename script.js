@@ -4,14 +4,14 @@ body.style.backgroundPosition = "TOP";
 body.style.backgroundRepeat = "no-repeat";
 body.style.backgroundSize = "90%";
 
-function threeSecondsPassed() {
+function secondsPassed() {
     body.style.backgroundImage = "url(./img/battle_field.jpeg)";
     addContent();
     game();
 }
 
 function addContent() {
-
+//! scoreBoard DIV 
     const contestant = document.createElement('div');
     contestant.setAttribute('id', 'contestant');
 
@@ -38,10 +38,15 @@ function addContent() {
     cpuPointsDiv.textContent = 0;
     pointsDiv.appendChild(cpuPointsDiv);
 
+    const roundResultText = document.createElement('div');
+    roundResultText.setAttribute('id', 'roundResultText');
+    roundResultText.textContent = "";
+
     const scoreBoard = document.getElementById('scoreBoard');
     scoreBoard.appendChild(contestant);
     scoreBoard.appendChild(pointsDiv);
-
+    scoreBoard.appendChild(roundResultText);
+//! weapons DIV
     const charmanderDIV = document.createElement('button');
     charmanderDIV.textContent = "Charmander";
     charmanderDIV.setAttribute('id', 'charmanderButton');
@@ -72,46 +77,56 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection = getComputerChoice(), userScore, comScore) {
     switch (playerSelection.toLowerCase()) {
-        case "rock":
+        case "charmander":
             playerSelection = 0;
             break;
-        case "paper":
+        case "squirtle":
             playerSelection = 1;
             break;
-        case "scissors":
+        case "bulbasaur":
             playerSelection = 2;
             break;
         default:
             break;
     }
-
-    if (playerSelection === 0) {
+    const roundResultText = document.getElementById('roundResultText');
+    if (playerSelection === 0) { //! Player's Weapon: Charmander
         switch (computerSelection) {
             case 0:
+                roundResultText.textContent = "You both used Charmander! Tie round!";
                 return 0;
             case 1:
+                roundResultText.textContent = "Opponent used Squirtle! Squirtle used water gun and was super effective!";
                 return -1;
             default:
+                roundResultText.textContent = "Opponent used Bulbasaur! Your Charmander used ember! And was super effective!";
                 return 1;
         }
     }
-    else if (playerSelection === 1) {
+    else if (playerSelection === 1) { //! Player's Weapon: squirtle
         switch (computerSelection) {
             case 0:
+                roundResultText.textContent = "Opponent used Charmander! Your Squirtle used water gun and was super effective!";
                 return 1;
             case 1:
+                roundResultText.textContent = "You both used Squirtle! Tie round!";
                 return 0;
             default:
+                roundResultText.textContent = "Opponent used Bulbasaur! Bulbasaur used vine whip! And was super effective!";
                 return -1;
         }
     }
     else {
-        switch (computerSelection) {
+        switch (computerSelection) { //! Player's Weapon: bulbasaur
             case 0:
+                roundResultText.textContent = "Opponent used Charmander! Charmander used ember! And was super effective!";
                 return -1;
             case 1:
+                roundResultText.textContent = "Opponent used Squirtle! Your Bulbasaur used vine whip! And was super effective!";
                 return 1;
             default:
+                roundResultText.textContent = "You both used Bulbasaur! Tie round!";
+                return 0;
         }
     }
 }
@@ -176,10 +191,13 @@ function game() {
     console.log(bulbasaur);
     console.log(pikachu);
 
-    pikachu.addEventListener("click", (event) => alert("PIKACHU DOESN'T WANT TO FIGHT :("))
+    pikachu.addEventListener("click", (event) => {
+        const roundResultText = document.getElementById("roundResultText");
+        roundResultText.textContent = "PIKACHU DOESN'T WANT TO FIGHT :(";
+    })
 
     charmander.addEventListener("click", (event) => {
-        roundResult = playRound(playerSelection = "rock");
+        roundResult = playRound(playerSelection = "charmander");
         console.log(roundResult);
         if(roundResult === 1) playerScore++;
         else if(roundResult === -1) cpuScore++;
@@ -187,8 +205,8 @@ function game() {
         else if(cpuScore === 5) cpuWins();
         else updateScoreBoard(playerScore, cpuScore);
     });
-    squirtleButton.addEventListener("click", (event) => {
-        roundResult = playRound(playerSelection = "paper");
+    squirtle.addEventListener("click", (event) => {
+        roundResult = playRound(playerSelection = "squirtle");
         console.log(roundResult);
         if(roundResult === 1) playerScore++;
         else if(roundResult === -1) cpuScore++;
@@ -197,7 +215,7 @@ function game() {
         else updateScoreBoard(playerScore, cpuScore);
     });
     bulbasaur.addEventListener("click", (event) => {
-        roundResult = playRound(playerSelection = "scissors");
+        roundResult = playRound(playerSelection = "bulbasaur");
         console.log(roundResult);
         if(roundResult === 1) playerScore++;
         else if(roundResult === -1) cpuScore++;
@@ -208,6 +226,6 @@ function game() {
 }
 
 
-setTimeout(threeSecondsPassed, 2300);
+setTimeout(secondsPassed, 2300);
 
 // TODO: All I'm missing is the name of the pokemon the level and the photos of the pokemon
